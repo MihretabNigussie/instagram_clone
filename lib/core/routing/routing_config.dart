@@ -4,6 +4,7 @@ import 'package:instagram_clone/core/constants/routing_constants.dart';
 import 'package:instagram_clone/features/presentation/pages/auth/sign_in_page.dart';
 import 'package:instagram_clone/features/presentation/pages/auth/sign_up_page.dart';
 import 'package:instagram_clone/features/presentation/pages/main_screen/main_screen.dart';
+import 'package:instagram_clone/features/presentation/pages/profile/edit_profile_page.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/home',
@@ -25,6 +26,12 @@ final GoRouter router = GoRouter(
         name: RouteConstants.mainRouteName,
         builder: (BuildContext context, GoRouterState state) {
           return MainPage();
+        }),
+    GoRoute(
+        path: '/edit-profile',
+        name: RouteConstants.editProfileRouteName,
+        builder: (BuildContext context, GoRouterState state) {
+          return const EditProfilePage();
         }),
   ],
 );

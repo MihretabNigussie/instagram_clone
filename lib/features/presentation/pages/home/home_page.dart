@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(bottom: 15 , top: 5),
+            padding: const EdgeInsets.only(bottom: 15, top: 5),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -90,6 +90,14 @@ class HomePage extends StatelessWidget {
                 color: primaryColor,
               ),
             ],
+          ),
+          sizeVer(5),
+          const Text(
+            "100 likes",
+            style: TextStyle(
+              color: primaryColor,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           sizeVer(5),
           Row(
