@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:instagram_clone/core/constants/theme_constants.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -12,15 +13,18 @@ class ProfilePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   'Username',
                   style: TextStyle(color: primaryColor, fontSize: 20),
                 ),
-                Icon(
-                  Icons.menu,
+                IconButton(
+                  onPressed: () {
+                    _openBottomModalSheet(context);
+                  },
+                  icon: const Icon(Icons.menu),
                   color: primaryColor,
                 )
               ],
@@ -148,5 +152,77 @@ class ProfilePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  _openBottomModalSheet(BuildContext context) {
+    return showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Container(
+            height: 150,
+            decoration: BoxDecoration(color: backGroundColor.withOpacity(.8)),
+            child: SingleChildScrollView(
+              child: Container(
+                margin: const EdgeInsets.symmetric(vertical: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(left: 10.0),
+                      child: Text(
+                        "More Options",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: primaryColor),
+                      ),
+                    ),
+                    sizeVer(8),
+                    const Divider(
+                      thickness: 1,
+                      color: secondaryColor,
+                    ),
+                    sizeVer(8),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          context.push('/edit-profile');
+                        },
+                        child: const Text(
+                          "Edit Profile",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 16,
+                              color: primaryColor),
+                        ),
+                      ),
+                    ),
+                    sizeVer(7),
+                    const Divider(
+                      thickness: 1,
+                      color: secondaryColor,
+                    ),
+                    sizeVer(7),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10.0),
+                      child: InkWell(
+                        onTap: () {},
+                        child: const Text(
+                          "Logout",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 16,
+                              color: primaryColor),
+                        ),
+                      ),
+                    ),
+                    sizeVer(7),
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
   }
 }
